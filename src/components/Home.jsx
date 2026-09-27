@@ -51,9 +51,9 @@ function Home() {
                 <Dropdown title="Filter" options={['tv', 'movie', 'all']} func={(e)=> setCategory(e.target.value)} />
             </div>
             <HorizontalCards data={trending} />
-            <div className=''>
+            {/* <div className=''>
                 <h1 className="text-white bg-orange-400/15 p-4">Home</h1>
-            </div>
+            </div> */}
         </div>
     ) : <Loader/>
 }
