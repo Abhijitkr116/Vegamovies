@@ -43,7 +43,7 @@ function Home() {
     }, [category])
 
     return wallpaper && trending ? (
-        <div className='w-[calc(100%-20vw)] min-h-screen relative ml-[20vw] overflow-hidden'>
+        <div className='relative min-h-screen w-full overflow-hidden md:ml-64 md:w-[calc(100%-16rem)]'>
             <Topnav />
             <Header data={wallpaper} />
             <div className='flex justify-between p-5'>
