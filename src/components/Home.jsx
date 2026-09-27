@@ -43,7 +43,7 @@ function Home() {
     }, [category])
 
     return wallpaper && trending ? (
-        <div className='relative min-h-screen w-full overflow-hidden md:ml-64 md:w-[calc(100%-16rem)]'>
+        <div className='w-[calc(100%-20vw)] min-h-screen relative ml-[20vw] overflow-hidden'>
             <Topnav />
             <Header data={wallpaper} />
             <div className='flex justify-between p-5'>
@@ -51,9 +51,9 @@ function Home() {
                 <Dropdown title="Filter" options={['tv', 'movie', 'all']} func={(e)=> setCategory(e.target.value)} />
             </div>
             <HorizontalCards data={trending} />
-            {/* <div className=''>
+            <div className=''>
                 <h1 className="text-white bg-orange-400/15 p-4">Home</h1>
-            </div> */}
+            </div>
         </div>
     ) : <Loader/>
 }
