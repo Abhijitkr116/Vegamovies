@@ -5,6 +5,7 @@ import Header from './partials/Header';
 import HorizontalCards from './partials/HorizontalCards';
 import Dropdown from './partials/Dropdown'
 import Loader from './Loader';
+import Sidenav from './partials/Sidenav';
 
 function Home() {
     document.title = "Vegamovies | Home"
@@ -43,17 +44,18 @@ function Home() {
     }, [category])
 
     return wallpaper && trending ? (
-        <div className='w-[calc(100%-20vw)] min-h-screen relative ml-[20vw] overflow-hidden'>
+        <div className='relative min-h-screen w-full overflow-hidden md:ml-64 md:w-[calc(100%-16rem)]'>
             <Topnav />
             <Header data={wallpaper} />
-            <div className='flex justify-between p-5'>
+            <Sidenav />
+            <div className='flex justify-between p-[7%] gap-10 md:gap-0'>
                 <h1 className='text-white text-3xl font-semibold'>Trending</h1>
                 <Dropdown title="Filter" options={['tv', 'movie', 'all']} func={(e)=> setCategory(e.target.value)} />
             </div>
             <HorizontalCards data={trending} />
-            <div className=''>
+            {/* <div className=''>
                 <h1 className="text-white bg-orange-400/15 p-4">Home</h1>
-            </div>
+            </div> */}
         </div>
     ) : <Loader/>
 }

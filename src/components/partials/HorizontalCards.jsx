@@ -4,7 +4,7 @@ import noimage from '/noimage.jpg'
 
 function HorizontalCards({ data }) {
     return (
-        <div className='mt-5 flex overflow-scroll gap-10 px-5'>
+        <div className='mt-5 flex overflow-scroll gap-10 px-7'>
             {data.map((d, index) => (
                 <Link key={index} className="card h-[300px] min-w-[200px]">
                     <img className='h-3/6 w-full object-cover' src={

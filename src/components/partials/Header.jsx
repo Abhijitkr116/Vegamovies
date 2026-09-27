@@ -10,11 +10,11 @@ function Header({ data }) {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
             }}>
-            <h1 className='text-white w-[50%] text-6xl font-black'>
+            <h1 className='text-white w-[100%] text-4xl md:text-6xl font-black'>
                 {data.name || data.title || data.original_name || data.original_title}
             </h1>
-            <p className='text-white w-[50%] mt-3 mb-3'>
-                {data.overview.slice(0, 200)}...<Link className='cursor-pointer text-blue-500'> more</Link>
+            <p className='text-white w-full mt-2 md:mt-3 mb-3 text-sm md:text-lg'>
+                {data.overview.slice(0, 200)}..<Link className='cursor-pointer text-blue-500'> more</Link>
             </p>
             <div className='flex gap-3 mb-3'>
                 <p className='text-white'>

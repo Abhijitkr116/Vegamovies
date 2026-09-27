@@ -10,7 +10,6 @@ import People from './components/People'
 function App() {
   return (
     <div className="w-full min-h-screen flex bg-[#000000]">
-      <Sidenav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/trending" element={<Trending />} />
