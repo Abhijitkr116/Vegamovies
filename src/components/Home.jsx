@@ -11,53 +11,95 @@ function Home() {
     document.title = "Vegamovies | Home"
 
     const [wallpaper, setWallpaper] = useState(null);
-    const [trending, settrending] = useState([]);
+    const [trending, setTrending] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [category, setCategory] = useState("all");
 
     const GetHeaderWallpaper = async () => {
-
-        try{
+        try {
             const { data } = await axios.get(`/trending/all/day`);
-            let random_data = data.results[(Math.random() * data.results.length).toFixed()];
-            setWallpaper(random_data);
+
+            const randomIndex = Math.floor(
+                Math.random() * data.results.length
+            );
+
+            setWallpaper(data.results[randomIndex]);
+        } catch (error) {
+            console.error("Header wallpaper error:", error);
+            setError("Failed to load movie data.");
         }
-        catch(error){
-            console.log("Error: ", error)
-        }
-    }
+    };
 
     const GetTrendingMovie = async () => {
-
-        try{
+        try {
             const { data } = await axios.get(`/trending/${category}/day`);
-            settrending(data.results)
+
+            setTrending(data.results);
+        } catch (error) {
+            console.error("Trending movies error:", error);
+            setError("Failed to load trending movies.");
         }
-        catch(error){
-            console.log("Error: ", error)
-        }
-    }
+    };
 
 
     useEffect(() => {
-        GetTrendingMovie();
-        !wallpaper && GetHeaderWallpaper();
-    }, [category])
+        const loadHomeData = async () => {
+            setLoading(true);
+            setError(null);
 
-    return wallpaper && trending ? (
+            await Promise.all([
+                GetTrendingMovie(),
+                GetHeaderWallpaper()
+            ]);
+
+            setLoading(false);
+        };
+
+        loadHomeData();
+    }, [category]);
+
+    if (loading) {
+        return <Loader />;
+    }
+
+    if (error) {
+        return (
+            <div className="min-h-screen flex items-center justify-center text-white">
+                <div className="text-center">
+                    <h2 className="text-2xl font-semibold">
+                        Something went wrong
+                    </h2>
+
+                    <p className="mt-2 text-gray-400">
+                        Unable to load movie data.
+                    </p>
+
+                    <button
+                        onClick={() => window.location.reload()}
+                        className="mt-4 px-5 py-2 bg-red-500 rounded"
+                    >
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        );
+    }
+    return (
         <div className='relative min-h-screen w-full overflow-hidden md:ml-64 md:w-[calc(100%-16rem)]'>
             <Topnav />
             <Header data={wallpaper} />
             <Sidenav />
             <div className='flex justify-between p-[7%] md:p-[2%] gap-10 md:gap-0'>
                 <h1 className='text-white text-3xl font-semibold'>Trending</h1>
-                <Dropdown title="Filter" options={['tv', 'movie', 'all']} func={(e)=> setCategory(e.target.value)} />
+                <Dropdown title="Filter" options={['tv', 'movie', 'all']} func={(e) => setCategory(e.target.value)} />
             </div>
             <HorizontalCards data={trending} />
             {/* <div className=''>
                 <h1 className="text-white bg-orange-400/15 p-4">Home</h1>
             </div> */}
         </div>
-    ) : <Loader/>
+    ) 
 }
 
 export default Home
