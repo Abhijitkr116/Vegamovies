@@ -44,8 +44,6 @@ function Popular() {
         }
     }
 
-    console.log(popular);
-
     useEffect(() => {
         refreshHandler();
     }, [category]);
@@ -74,7 +72,7 @@ function Popular() {
                 hasMore={hasMore}
                 loader={<h1 className="text-white">Loading...</h1>}
             >
-                <Cards data={popular} />
+                <Cards data={popular} title={category}/>
             </InfiniteScroll>
         </div>
     ) : (

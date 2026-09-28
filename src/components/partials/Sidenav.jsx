@@ -12,7 +12,7 @@ function Sidenav() {
         { name: 'Trending', path: '/trending' },
         { name: 'Popular', path: '/popular' },
         { name: 'Movies', path: '/movie' },
-        { name: 'TV shows', path: '/tvshows' },
+        { name: 'TV shows', path: '/tv' },
         { name: 'People', path: '/people' },
     ]
 

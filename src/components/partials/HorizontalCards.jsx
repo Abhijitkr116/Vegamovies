@@ -6,7 +6,7 @@ function HorizontalCards({ data }) {
     return (
         <div className='mt-5 flex overflow-scroll gap-10 px-7'>
             {data.map((d, index) => (
-                <Link key={index} className="card h-[300px] min-w-[200px]">
+                <Link to={`/${d.media_type}/details/${d.id}`} key={index} className="card h-[300px] min-w-[200px]">
                     <img className='h-3/6 w-full object-cover' src={
                         d.backdrop_path || d.profile_path ?
                             `https://image.tmdb.org/t/p/original/${d.backdrop_path || d.profile_path}` :

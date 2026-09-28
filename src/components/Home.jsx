@@ -48,7 +48,7 @@ function Home() {
             <Topnav />
             <Header data={wallpaper} />
             <Sidenav />
-            <div className='flex justify-between p-[7%] gap-10 md:gap-0'>
+            <div className='flex justify-between p-[7%] md:p-[2%] gap-10 md:gap-0'>
                 <h1 className='text-white text-3xl font-semibold'>Trending</h1>
                 <Dropdown title="Filter" options={['tv', 'movie', 'all']} func={(e)=> setCategory(e.target.value)} />
             </div>

@@ -79,7 +79,7 @@ function Trending() {
                 hasMore={hasMore}
                 loader={<h1 className="text-white">Loading...</h1>}
             >
-                <Cards data={trending} />
+                <Cards data={trending} title={category}/>
             </InfiniteScroll>
         </div>
     ) : <Loader />

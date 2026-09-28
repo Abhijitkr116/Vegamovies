@@ -60,7 +60,7 @@ function Topnav() {
 
             {searches.length > 0 && query.trim() && (
                 <div className="absolute left-4 right-4 top-full z-30 mx-auto max-h-[65vh] max-w-4xl overflow-y-auto rounded-lg border border-white/20 bg-zinc-950/95 text-white shadow-xl backdrop-blur-lg sm:left-6 sm:right-6">
-                    {searches.map((data) => {
+                    {searches.map((data, index) => {
                         const title =
                             data.name ||
                             data.title ||
@@ -73,8 +73,8 @@ function Topnav() {
 
                         return (
                             <Link
-                                key={`${data.media_type}-${data.id}`}
-                                to={ data.media_type === 'person' ? `/people` : data.media_type === 'tv'? `/tvshows` : `/movie`}
+                                key={index}
+                                to={`/${data.media_type}/details/${data.id}`}
                                 onClick={clearSearch}
                                 className="flex w-full items-center gap-3 border-b border-white/10 p-2 transition hover:bg-white/10 sm:gap-4 sm:p-3">
                                 <img className="h-16 w-16 shrink-0 rounded object-cover sm:h-20 sm:w-28"

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Cards({ data }) {
+function Cards({ data, title }) {
+    console.log(title)
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 w-full md:py-8 sm:px-6 lg:px-[4%]">
 
             {data.map((c, i) => (
                 <Link
-                    key={i}
+                    to={`/${c.media_type || title}/details/${c.id}`} key={i}
                     className="w-full bg-zinc-900 p-4 sm:p-5 rounded-lg
                     hover:bg-zinc-800 transition-all duration-300 relative"
                 >
