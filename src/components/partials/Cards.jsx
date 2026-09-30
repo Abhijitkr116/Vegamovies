@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Cards({ data, title }) {
     console.log(title)
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 w-full md:py-8 sm:px-6 lg:px-[4%]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 w-full md:py-8 p-10 lg:px-[4%] ">
 
             {data.map((c, i) => (
                 <Link
@@ -23,7 +23,7 @@ function Cards({ data, title }) {
                     <h1 className="text-white text-base sm:text-lg md:text-2xl font-semibold mt-3 line-clamp-2">
                         {c.name || c.title || c.original_name || c.original_title}
                     </h1>
-                    {c.vote_average && <span className='text-white rounded-tr-2xl rounded-tl-2xl rounded-br-2xl absolute top-[-2%] right-[-5%] bg-red-600/60 h-[3vw] w-[3.5vw] grid place-items-center'>
+                    {c.vote_average && <span className='text-white rounded-tr md:rounded-tr-2xl rounded-tl-2xl rounded-br-2xl absolute top-0 md:top-[-2%] right-0 md:right-[-5%] bg-red-600 md:bg-red-600/60 h-[10vw] md:h-[3vw] w-[10vw] md:w-[3.5vw] grid place-items-center'>
                         {(c.vote_average * 10).toFixed()}%
                     </span>}
                 </Link>

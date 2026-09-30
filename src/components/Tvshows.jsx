@@ -53,9 +53,9 @@ function Tvshows() {
     return tvshows.length > 0 ? (
         <div className="bg-black z-10 w-full min-h-screen">
             <div className="w-full flex items-center bg-gray-950 px-[3%]">
-                <h1 className="text-2xl font-semibold text-zinc-400">
+                <h1 className="text-2xl font-semibold text-zinc-400 min-w-[200px]">
                     <i onClick={() => navigate(-1)} className="hover:text-[#F95C4B] cursor-pointer ri-arrow-left-line mr-2"></i>
-                    Movies
+                    Tv Shows
                 </h1>
 
                 <Topnav />
